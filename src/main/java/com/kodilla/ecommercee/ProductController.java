@@ -1,36 +1,41 @@
 package com.kodilla.ecommercee;
 
+import com.kodilla.ecommercee.domain.ProductDto;
+import com.kodilla.ecommercee.exception.ProductNotFoundException;
+import com.kodilla.ecommercee.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/v1/products")
 public class ProductController {
+    @Autowired
+    private ProductService productService;
 
-    @GetMapping(value = "getProducts")
-    public List<String> getProducts() {
-        return new ArrayList<>();
+    @GetMapping
+    public List<ProductDto> getProducts() {
+        return productService.getProducts();
     }
 
-    @GetMapping(value = "getProduct")
-    public String getProduct(@RequestParam Long productId) throws Exception {
-        return "create product";
+    @GetMapping("/{id}")
+    public ProductDto getProduct(@PathVariable Long id) throws ProductNotFoundException {
+        return productService.getProduct(id);
     }
 
-    @DeleteMapping(value = "deleteProduct")
-    public void deleteProduct(@RequestParam Long productId) throws Exception{
-        //delete product
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable Long id) {
+        productService.deleteProduct(id);
     }
 
-    @PostMapping(value = "createProduct")
-    public void createProduct(@RequestBody String productDto) {
-        //create product
+    @PostMapping
+    public void createProduct(@RequestBody ProductDto productDto) {
+        productService.createProduct(productDto);
     }
 
-    @PutMapping(value = "updateProduct")
-    public String updateProduct(@RequestBody String productDto) {
-        return "update product";
+    @PutMapping("/{id}")
+    public ProductDto updateProduct(@PathVariable Long id, @RequestBody ProductDto productDto) throws ProductNotFoundException {
+        return productService.updateProduct(id, productDto);
     }
 }
