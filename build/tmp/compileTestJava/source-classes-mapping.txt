@@ -1,0 +1,4 @@
+com/kodilla/ecommercee/EcommerceeApplicationTests.java
+ com.kodilla.ecommercee.EcommerceeApplicationTests
+com/kodilla/ecommercee/SpringBootJPAIntegrationTest.java
+ com.kodilla.ecommercee.SpringBootJPAIntegrationTest
