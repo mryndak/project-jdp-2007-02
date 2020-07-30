@@ -19,8 +19,8 @@ public class OrderController {
         return new OrderDto();
     }
 
-    @DeleteMapping
-    public void deleteOrder(@RequestParam Long id){
+    @DeleteMapping("/{id}")
+    public void deleteOrder(@PathVariable Long id){
     }
 
     @PostMapping
