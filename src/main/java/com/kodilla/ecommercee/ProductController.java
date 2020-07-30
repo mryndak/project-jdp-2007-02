@@ -1,7 +1,7 @@
 package com.kodilla.ecommercee;
 
 import com.kodilla.ecommercee.domain.ProductDto;
-import com.kodilla.ecommercee.exception.ProductNotFoundException;
+import com.kodilla.ecommercee.exception.NotFoundException;
 import com.kodilla.ecommercee.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ProductDto getProduct(@PathVariable Long id) throws ProductNotFoundException {
+    public ProductDto getProduct(@PathVariable Long id) throws NotFoundException {
         return productService.getProduct(id);
     }
 
@@ -35,7 +35,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ProductDto updateProduct(@PathVariable Long id, @RequestBody ProductDto productDto) throws ProductNotFoundException {
+    public ProductDto updateProduct(@PathVariable Long id, @RequestBody ProductDto productDto) throws NotFoundException {
         return productService.updateProduct(id, productDto);
     }
 }
