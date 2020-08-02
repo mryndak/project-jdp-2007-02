@@ -14,5 +14,4 @@ public class Cart {
     private BigDecimal totalPrice;
     private int quantity;
     private long userId;
-
 }

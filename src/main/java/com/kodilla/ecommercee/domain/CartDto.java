@@ -9,7 +9,6 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class CartDto {
     private List<ProductDto> productList;
     private BigDecimal totalPrice;
