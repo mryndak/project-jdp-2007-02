@@ -1,14 +1,10 @@
 package com.kodilla.ecommercee.jdbc;
 
-
-import org.springframework.stereotype.Repository;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-@Repository
 public class DbManager {
     private Connection conn;
     private static DbManager dbManagerInstance;
