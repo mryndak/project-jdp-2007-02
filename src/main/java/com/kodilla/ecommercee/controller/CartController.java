@@ -1,6 +1,7 @@
 package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.domain.CartDto;
+import com.kodilla.ecommercee.domain.ProductDto;
 import com.kodilla.ecommercee.exception.NotFoundException;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,11 @@ public class CartController {
 
     @DeleteMapping("/{id}")
     public void deleteCart(@PathVariable Long id) {
+    }
+
+    @PutMapping("/{id}")
+    public CartDto updateCart(@PathVariable Long id, @RequestBody CartDto cartDto) {
+        return new CartDto(cartDto.getId(), cartDto.getProductList(), cartDto.getTotalPrice(), cartDto.getQuantity(), cartDto.getUserId());
     }
 
 //    @RequestMapping(method = RequestMethod.PUT, value = "addProductToCart")
