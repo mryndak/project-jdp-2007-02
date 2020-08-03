@@ -1,9 +1,7 @@
 package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.domain.CartDto;
-import com.kodilla.ecommercee.domain.ProductDto;
 import com.kodilla.ecommercee.exception.NotFoundException;
-import com.kodilla.ecommercee.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -13,22 +11,22 @@ import java.util.List;
 @RequestMapping("/v1/carts")
 public class CartController {
 
-    @RequestMapping(method = RequestMethod.GET, value = "getCarts")
+    @GetMapping
     public List<CartDto> getCarts() {
         return new ArrayList<>();
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "createCart")
+    @PostMapping
     public void createCart(@RequestBody CartDto cartDto) {
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "getCart")
-    public CartDto getCart(@RequestParam Long id) throws NotFoundException {
+    @GetMapping("/{id}")
+    public CartDto getCart(@PathVariable Long id) throws NotFoundException {
         return new CartDto();
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "deleteCart")
-    public void deleteCart(@RequestParam Long id) {
+    @DeleteMapping("/{id}")
+    public void deleteCart(@PathVariable Long id) {
     }
 
 //    @RequestMapping(method = RequestMethod.PUT, value = "addProductToCart")
