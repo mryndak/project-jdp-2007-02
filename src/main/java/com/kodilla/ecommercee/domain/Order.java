@@ -19,7 +19,7 @@ public class Order {
     @GeneratedValue
     @Column(unique = true)
     private Long id;
-//    Zakomentowane ponieważ czekam na klase User.
+    //        Zakomentowane ponieważ czekam na klase User.
 //    @ManyToOne
 //    @JoinColumn(name = "user_id")
 //    private User user;
