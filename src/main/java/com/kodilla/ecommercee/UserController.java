@@ -14,22 +14,22 @@ public class UserController {
     public List<UserDto> getUsers() {
         return Arrays.asList(
                 UserDto.builder()
-                        .id(3)
+                        .id(3L)
                         .userName("Piotrek")
                         .status(1)
-                        .userKey(59403)
+                        .userKey(59403L)
                         .build(),
                 UserDto.builder()
-                        .id(2)
+                        .id(2L)
                         .userName("Admin")
                         .status(1)
-                        .userKey(96997)
+                        .userKey(96997L)
                         .build());
     }
 
     @GetMapping("/{id}")
     public UserDto getUser(@PathVariable Long id) {
-        return new UserDto(id, "Piotr", 1, 59403);
+        return new UserDto();
     }
 
     @DeleteMapping("/{id}")
@@ -38,7 +38,26 @@ public class UserController {
 
     @PutMapping("/{id}")
     public UserDto updateUser(@PathVariable Long id,@RequestBody UserDto userDto) {
-        return new UserDto(userDto.getId(), userDto.getUserName(), userDto.getStatus(), userDto.getUserKey());
+        return new UserDto(
+                userDto.getId(),
+                userDto.getUserName(),
+                userDto.getStatus(),
+                userDto.getUserKey(),
+                userDto.getFirstName(),
+                userDto.getLastName(),
+                userDto.getBirthDate(),
+                userDto.getRegisterDate(),
+                userDto.getEmail(),
+                userDto.getCity(),
+                userDto.getPostCode(),
+                userDto.getStreet(),
+                userDto.getHouseNr(),
+                userDto.getApartmentNr(),
+                userDto.getPhoneNumber(),
+                userDto.isBlocked(),
+                userDto.getLogin(),
+                userDto.getPassword()
+        );
     }
 
     @PostMapping
