@@ -10,9 +10,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CartDto {
-    private long id;
+    private Long id;
     private List<ProductDto> productList;
     private BigDecimal totalPrice;
-    private int quantity;
-    private long userId;
+    private Integer quantity;
+    private Long userId;
 }
