@@ -14,5 +14,7 @@ public class CartDto {
     private List<ProductDto> productList;
     private BigDecimal totalPrice;
     private Integer quantity;
-    private Long userId;
+    private UserDto userDto;
+    private ProductDto productDto;
+    private List<ProductDto> products;
 }
