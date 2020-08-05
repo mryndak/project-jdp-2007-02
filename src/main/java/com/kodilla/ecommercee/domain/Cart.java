@@ -8,6 +8,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
@@ -17,10 +19,13 @@ import java.math.BigDecimal;
 @Table(name = "CARTS")
 public class Cart {
     private Long id;
-    //    private List<Product> productList;
     private BigDecimal totalPrice;
     private Integer quantity;
-    private Long userId;
+
+    // Czekam na zmergowanie klas USER i PRODUCTS oraz stworzenie encji
+//    private User user;
+//    private Product product;
+//    private List<Product> products = new ArrayList<>();
 
     @Id
     @NotNull
@@ -29,6 +34,11 @@ public class Cart {
     public Long getId() {
         return id;
     }
+
+//    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
+//    public List<Product> getProductList() {
+//        return products;
+//    }
 
     @NotNull
     @Column(name = "TOTAL_PRICE")
@@ -42,9 +52,10 @@ public class Cart {
         return quantity;
     }
 
-    @NotNull
-    @Column(name = "USER_ID")
-    public Long getUserId() {
-        return userId;
-    }
+//    @NotNull
+//    @Column(name = "USER")
+////    @OneToOne // adnotacja w klasie User
+//    public User getUser() {
+//        return user;
+//    }
 }
