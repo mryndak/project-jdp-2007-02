@@ -22,7 +22,8 @@ public class Cart {
     private BigDecimal totalPrice;
     private Integer quantity;
 
-    // Czekam na zmergowanie klas USER i PRODUCTS oraz stworzenie encji
+    // ZAKOMENTOWANE Z UWAGI NA BRAK KLAS (OBIEKTÓW) PRODUCT I USER
+    
 //    private User user;
 //    private Product product;
 //    private List<Product> products = new ArrayList<>();
@@ -34,6 +35,8 @@ public class Cart {
     public Long getId() {
         return id;
     }
+
+    // ZAKOMENTOWANE Z UWAGI NA BRAK KLAS (OBIEKTÓW) PRODUCT I USER
 
 //    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
 //    public List<Product> getProductList() {
@@ -51,6 +54,8 @@ public class Cart {
     public Integer getQuantity() {
         return quantity;
     }
+
+    // ZAKOMENTOWANE Z UWAGI NA BRAK KLAS (OBIEKTÓW) PRODUCT I USER
 
 //    @NotNull
 //    @Column(name = "USER")
