@@ -21,9 +21,6 @@ public class Cart {
     private Long id;
     private BigDecimal totalPrice;
     private Integer quantity;
-
-    // ZAKOMENTOWANE Z UWAGI NA BRAK KLAS (OBIEKTÓW) PRODUCT I USER
-//
 //    private User user;
 //    private Product product;
 //    private List<Product> products = new ArrayList<>();
@@ -35,13 +32,6 @@ public class Cart {
     public Long getId() {
         return id;
     }
-
-    // ZAKOMENTOWANE Z UWAGI NA BRAK KLAS (OBIEKTÓW) PRODUCT I USER
-
-//    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
-//    public List<Product> getProductList() {
-//        return products;
-//    }
 
     @NotNull
     @Column(name = "TOTAL_PRICE")
@@ -55,12 +45,14 @@ public class Cart {
         return quantity;
     }
 
-    // ZAKOMENTOWANE Z UWAGI NA BRAK KLAS (OBIEKTÓW) PRODUCT I USER
-
 //    @NotNull
 //    @Column(name = "USER")
-////    @OneToOne // adnotacja w klasie User
 //    public User getUser() {
 //        return user;
+//    }
+//
+//    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
+//    public List<Product> getProductList() {
+//        return products;
 //    }
 }
