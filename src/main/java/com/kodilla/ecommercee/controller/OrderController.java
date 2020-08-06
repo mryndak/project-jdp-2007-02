@@ -31,7 +31,7 @@ public class OrderController {
     public OrderDto updateOrder(@RequestBody OrderDto orderDto) {
         return OrderDto.builder()
                 .id(orderDto.getId())
-                .userId(orderDto.getUserId())
+                .user(orderDto.getUser())
                 .totalPrice(orderDto.getTotalPrice())
                 .dateOfOrder(orderDto.getDateOfOrder())
                 .dateOfShipment(orderDto.getDateOfShipment())

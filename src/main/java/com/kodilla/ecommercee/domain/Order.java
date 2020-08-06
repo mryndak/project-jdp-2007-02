@@ -19,10 +19,9 @@ public class Order {
     @GeneratedValue
     @Column(unique = true)
     private Long id;
-    //        Zakomentowane ponieważ czekam na klase User.
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
     @NotNull
     private BigDecimal totalPrice;
     private LocalDate dateOfOrder;
