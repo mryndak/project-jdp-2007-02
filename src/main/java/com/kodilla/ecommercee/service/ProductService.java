@@ -1,6 +1,6 @@
 package com.kodilla.ecommercee.service;
 
-import com.kodilla.ecommercee.domain.ProductDto;
+import com.kodilla.ecommercee.dto.ProductDto;
 import com.kodilla.ecommercee.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 

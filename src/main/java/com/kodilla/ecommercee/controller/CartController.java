@@ -1,6 +1,6 @@
 package com.kodilla.ecommercee.controller;
 
-import com.kodilla.ecommercee.domain.CartDto;
+import com.kodilla.ecommercee.dto.CartDto;
 import com.kodilla.ecommercee.exception.NotFoundException;
 import org.springframework.web.bind.annotation.*;
 
