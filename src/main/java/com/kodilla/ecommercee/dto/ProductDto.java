@@ -1,4 +1,4 @@
-package com.kodilla.ecommercee.domain;
+package com.kodilla.ecommercee.dto;
 
 import lombok.*;
 

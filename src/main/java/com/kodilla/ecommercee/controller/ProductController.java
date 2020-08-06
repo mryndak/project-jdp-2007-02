@@ -1,6 +1,6 @@
 package com.kodilla.ecommercee.controller;
 
-import com.kodilla.ecommercee.domain.ProductDto;
+import com.kodilla.ecommercee.dto.ProductDto;
 import com.kodilla.ecommercee.exception.NotFoundException;
 import com.kodilla.ecommercee.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;

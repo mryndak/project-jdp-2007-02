@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee;
 
+import com.kodilla.ecommercee.dto.GroupDto;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;

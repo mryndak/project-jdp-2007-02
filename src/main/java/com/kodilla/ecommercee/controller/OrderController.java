@@ -1,6 +1,6 @@
 package com.kodilla.ecommercee.controller;
 
-import com.kodilla.ecommercee.domain.OrderDto;
+import com.kodilla.ecommercee.dto.OrderDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
