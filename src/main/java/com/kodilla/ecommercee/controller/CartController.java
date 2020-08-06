@@ -29,8 +29,12 @@ public class CartController {
     public void deleteCart(@PathVariable Long id) {
     }
 
-    @PutMapping("/{id}")
-    public CartDto updateCart(@PathVariable Long id, @RequestBody CartDto cartDto) {
-        return new CartDto(cartDto.getId(), cartDto.getProductList(), cartDto.getTotalPrice(), cartDto.getQuantity(), cartDto.getUserId());
-    }
+//    @RequestMapping(method = RequestMethod.PUT, value = "addProductToCart")
+//    public void addProductToCart(long id, int quantity) {
+//    }
+//
+//    @RequestMapping(method = RequestMethod.DELETE, value = "deleteProductFromCart")
+//    public void deleteProductFromCart(long id, int quantity) {
+//    }
+
 }
