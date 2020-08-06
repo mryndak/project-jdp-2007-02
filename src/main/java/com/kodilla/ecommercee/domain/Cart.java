@@ -19,7 +19,6 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "CARTS")
 public class Cart {
-
     private Long id;
     private BigDecimal totalPrice;
     private Integer quantity;
@@ -54,21 +53,4 @@ public class Cart {
 
     @NotNull
     public User user;
-
-//@Id
-//@GeneratedValue
-//@NotNull
-//@Column(name = "CART_ID", unique = true)
-//    private Long id;
-//
-//    @NotNull
-//    @Column(name = "TOTAL_PRICE")
-//    private BigDecimal totalPrice;
-//
-//    @NotNull
-//    @Column(name = "QUANTITY")
-//    private Integer quantity;
-//
-//    @NotNull
-//    private User user;
 }
