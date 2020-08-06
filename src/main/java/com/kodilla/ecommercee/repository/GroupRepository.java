@@ -1,4 +1,4 @@
-package com.kodilla.ecommercee.dao;
+package com.kodilla.ecommercee.repository;
 
 import com.kodilla.ecommercee.domain.Group;
 import org.springframework.data.repository.CrudRepository;
@@ -8,6 +8,6 @@ import javax.transaction.Transactional;
 
 @Transactional
 @Repository
-public interface GroupDao extends CrudRepository<Group, Long> {
+public interface GroupRepository extends CrudRepository<Group, Long> {
 
 }
