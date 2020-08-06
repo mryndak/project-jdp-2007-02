@@ -23,7 +23,7 @@ public class Cart {
     private Integer quantity;
 
     // ZAKOMENTOWANE Z UWAGI NA BRAK KLAS (OBIEKTÓW) PRODUCT I USER
-    
+//
 //    private User user;
 //    private Product product;
 //    private List<Product> products = new ArrayList<>();
@@ -31,7 +31,7 @@ public class Cart {
     @Id
     @NotNull
     @GeneratedValue
-    @Column(name = "ID")
+    @Column(name = "CART_ID", unique = true)
     public Long getId() {
         return id;
     }
