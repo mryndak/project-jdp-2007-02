@@ -1,6 +1,10 @@
 package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.dto.UserDto;
+import com.kodilla.ecommercee.exception.NotFoundException;
+import com.kodilla.ecommercee.mapper.UserMapper;
+import com.kodilla.ecommercee.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -10,58 +14,35 @@ import java.util.List;
 @RequestMapping("/v1/users")
 public class UserController {
 
+    @Autowired
+    private UserService service;
+
+    @Autowired
+    private UserMapper mapper;
+
     @GetMapping
     public List<UserDto> getUsers() {
-        return Arrays.asList(
-                UserDto.builder()
-                        .id(3L)
-                        .userName("Piotrek")
-                        .status(1)
-                        .userKey(59403L)
-                        .build(),
-                UserDto.builder()
-                        .id(2L)
-                        .userName("Admin")
-                        .status(1)
-                        .userKey(96997L)
-                        .build());
+        return mapper.mapToUserDtoList(service.getUsers());
     }
 
     @GetMapping("/{id}")
-    public UserDto getUser(@PathVariable Long id) {
-        return new UserDto();
+    public UserDto getUser(@PathVariable final Long id) throws NotFoundException {
+        return mapper.mapToUserDto(service.getUser(id));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) {
+    public void deleteUser(@PathVariable final Long id) {
+        service.deleteUser(id);
     }
 
     @PutMapping("/{id}")
-    public UserDto updateUser(@PathVariable Long id,@RequestBody UserDto userDto) {
-        return new UserDto(
-                userDto.getId(),
-                userDto.getUserName(),
-                userDto.getStatus(),
-                userDto.getUserKey(),
-                userDto.getFirstName(),
-                userDto.getLastName(),
-                userDto.getBirthDate(),
-                userDto.getRegisterDate(),
-                userDto.getEmail(),
-                userDto.getCity(),
-                userDto.getPostCode(),
-                userDto.getStreet(),
-                userDto.getHouseNr(),
-                userDto.getApartmentNr(),
-                userDto.getPhoneNumber(),
-                userDto.isBlocked(),
-                userDto.getLogin(),
-                userDto.getPassword()
-        );
+    public UserDto updateUser(@PathVariable Long id, @RequestBody UserDto userDto) throws NotFoundException {
+        return mapper.mapToUserDto(service.saveUser(mapper.mapToUser(userDto)));
     }
 
     @PostMapping
     public void createUser(@RequestBody UserDto userDto) {
+        service.createUser(mapper.mapToUser(userDto));
     }
 }
 
