@@ -30,9 +30,11 @@ public class Product {
     @Column(name = "DESCRIPTION")
     private String description;
 
+    @NotNull
     @Column(name = "PRICE")
     private BigDecimal price;
 
+    @NotNull
     @Column(name = "STOCK")
     private int Stock;
 
@@ -45,7 +47,7 @@ public class Product {
     @Column(name = "AGE_REGULATION")
     private boolean ageRegulation;
 
-//    @ManyToOne
+//    @ManyToOne(optional = false)
 //    @JoinColumn(name = "GROUP_ID")
 //    private Group group;
 
