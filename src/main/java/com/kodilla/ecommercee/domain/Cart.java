@@ -8,6 +8,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,10 +33,9 @@ public class Cart {
     @Column(name = "QUANTITY")
     private Integer quantity;
 
-//    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
-//    public List<Product> getProductList() {
-//        return products;
-//    }
+    @NotNull
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
+    public List<Product> products = new ArrayList<>();
 
     @OneToOne
     @NotNull
