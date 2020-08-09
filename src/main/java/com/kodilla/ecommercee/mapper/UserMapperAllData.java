@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class UserMapper {
+public class UserMapperAllData {
 
     public User mapToUser(final UserDto userDto) {
         return new User(
