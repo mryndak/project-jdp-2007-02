@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("v1/groups")
-public class GroupController {
+public class GroupProductController {
 
     @RequestMapping(method = RequestMethod.GET, value = "getGroups")
     public List<GroupDto> getGroups() {

@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/users")
-public class UserController {
+public class UserProductController {
 
     @GetMapping
     public List<UserDto> getUsers() {
