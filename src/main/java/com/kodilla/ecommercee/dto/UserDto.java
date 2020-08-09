@@ -1,4 +1,6 @@
 package com.kodilla.ecommercee.dto;
+import com.kodilla.ecommercee.domain.Cart;
+import com.kodilla.ecommercee.domain.Order;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -9,7 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-
 public class UserDto {
     private Long id;
     private String userName;
@@ -29,7 +30,7 @@ public class UserDto {
     private boolean isBlocked;
     private String login;
     private String password;
-//    private List<Order> orders;
-//    private Cart cart;
+    private List<Order> orders;
+    private Cart cart;
 }
 
