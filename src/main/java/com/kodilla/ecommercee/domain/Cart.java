@@ -33,7 +33,6 @@ public class Cart {
     @Column(name = "QUANTITY")
     private Integer quantity;
 
-    @NotNull
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
     public List<Product> products = new ArrayList<>();
 
