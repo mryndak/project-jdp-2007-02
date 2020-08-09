@@ -4,20 +4,18 @@ import com.kodilla.ecommercee.dto.UserDto;
 import com.kodilla.ecommercee.exception.NotFoundException;
 import com.kodilla.ecommercee.mapper.UserMapperAllData;
 import com.kodilla.ecommercee.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/v1/users")
+@RequiredArgsConstructor
 public class UserController {
 
-    @Autowired
-    private UserService service;
-
-    @Autowired
-    private UserMapperAllData mapper;
+    private final UserService service;
+    private final UserMapperAllData mapper;
 
     @GetMapping
     public List<UserDto> getUsers() {
