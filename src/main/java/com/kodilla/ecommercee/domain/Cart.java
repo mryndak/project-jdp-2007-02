@@ -33,7 +33,8 @@ public class Cart {
     @Column(name = "QUANTITY")
     private Integer quantity;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @Column(name = "PRODUCT_ID")
     public List<Product> products = new ArrayList<>();
 
     @OneToOne
