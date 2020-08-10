@@ -24,8 +24,8 @@ public class Group {
     private Long id;
 
     @NotNull
+    @Column(name = "name")
     private String name;
-
     @OneToMany(
             targetEntity = Product.class,
             mappedBy = "group",
@@ -33,4 +33,14 @@ public class Group {
             fetch = FetchType.LAZY
     )
     private List<Product> products = new ArrayList<>();
+
+    public Group(String name) {
+        this.name = name;
+    }
+
+    public Group(String name, List<Product> products) {
+        this.name = name;
+        this.products = products;
+    }
+
 }
