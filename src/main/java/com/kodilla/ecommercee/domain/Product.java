@@ -1,6 +1,5 @@
 package com.kodilla.ecommercee.domain;
 
-import com.kodilla.ecommercee.dto.OrderItem;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -51,13 +50,13 @@ public class Product {
     @JoinColumn(name = "GROUP_ID")
     private Group group;
 
-//    @ManyToMany(
-//            cascade = CascadeType.ALL,
-//            mappedBy = "products",
-//            fetch = FetchType.LAZY
-//    )
-//    @Column(name = "CART_ID")
-//    private List<Cart> carts = new ArrayList<>();
+    @ManyToMany(
+            cascade = CascadeType.ALL,
+            mappedBy = "products",
+            fetch = FetchType.LAZY
+    )
+    @Column(name = "CART_ID")
+    private List<Cart> carts = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "ORDER_ITEM_ID")
