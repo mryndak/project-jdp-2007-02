@@ -1,7 +1,7 @@
 package com.kodilla.ecommercee.dto;
 
 import com.kodilla.ecommercee.domain.User;
-import com.kodilla.ecommercee.dto.OrderItem;
+import com.kodilla.ecommercee.domain.OrderItem;
 import lombok.*;
 
 import java.math.BigDecimal;
