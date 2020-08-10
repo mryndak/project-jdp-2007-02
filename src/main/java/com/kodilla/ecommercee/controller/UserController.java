@@ -56,7 +56,9 @@ public class UserController {
                 userDto.getPhoneNumber(),
                 userDto.isBlocked(),
                 userDto.getLogin(),
-                userDto.getPassword()
+                userDto.getPassword(),
+                userDto.getOrders(),
+                userDto.getCart()
         );
     }
 

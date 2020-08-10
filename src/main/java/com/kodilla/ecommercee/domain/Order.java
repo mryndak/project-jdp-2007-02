@@ -1,6 +1,5 @@
 package com.kodilla.ecommercee.domain;
 
-import com.kodilla.ecommercee.dto.OrderItem;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,6 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
