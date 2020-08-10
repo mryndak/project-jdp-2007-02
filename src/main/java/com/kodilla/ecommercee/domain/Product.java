@@ -46,9 +46,9 @@ public class Product {
     @Column(name = "AGE_REGULATION")
     private boolean ageRegulation;
 
-//    @ManyToOne(optional = false)
-//    @JoinColumn(name = "GROUP_ID")
-//    private Group group;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "GROUP_ID")
+    private Group group;
 
     @ManyToMany(
             cascade = CascadeType.ALL,
