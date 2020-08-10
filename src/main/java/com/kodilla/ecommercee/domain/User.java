@@ -83,7 +83,7 @@ public class User {
     )
     private List<Order> orders = new ArrayList<>();
 
-//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinColumn(name = "CARTS_ID")
-//    private Cart cart;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "CARTS_ID")
+    private Cart cart;
 }

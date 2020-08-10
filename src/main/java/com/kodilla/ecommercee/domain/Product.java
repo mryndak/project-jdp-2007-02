@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "PRODUCTS")
@@ -44,17 +46,17 @@ public class Product {
     @Column(name = "AGE_REGULATION")
     private boolean ageRegulation;
 
-//    @ManyToOne(optional = false)
-//    @JoinColumn(name = "GROUP_ID")
-//    private Group group;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "GROUP_ID")
+    private Group group;
 
-//    @ManyToMany(
-//            cascade = CascadeType.ALL,
-//            mappedBy = "products",
-//            fetch = FetchType.LAZY
-//    )
-//    @Column(name = "CART_ID")
-//    private List<Cart> carts = new ArrayList<>();
+    @ManyToMany(
+            cascade = CascadeType.ALL,
+            mappedBy = "products",
+            fetch = FetchType.LAZY
+    )
+    @Column(name = "CART_ID")
+    private List<Cart> carts = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "ORDER_ITEM_ID")
