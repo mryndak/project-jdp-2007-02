@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -42,5 +43,4 @@ public class Group {
         this.name = name;
         this.products = products;
     }
-
 }

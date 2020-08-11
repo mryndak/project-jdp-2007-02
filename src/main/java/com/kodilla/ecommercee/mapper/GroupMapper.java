@@ -1,9 +1,7 @@
 package com.kodilla.ecommercee.mapper;
-
 import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.dto.GroupDto;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
