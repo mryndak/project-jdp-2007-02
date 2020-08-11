@@ -22,7 +22,7 @@ public class OrderDto {
     private String deliveryMethod;
     private boolean isPaid;
     private boolean orderCompleted;
-    private List<OrderItem> items;
+    private List<OrderItemDto> items;
     private String comment;
 }
 
