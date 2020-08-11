@@ -3,6 +3,7 @@ package com.kodilla.ecommercee.entity;
 import com.kodilla.ecommercee.domain.Order;
 import com.kodilla.ecommercee.domain.OrderItem;
 import com.kodilla.ecommercee.domain.User;
+import com.kodilla.ecommercee.domain.UserStatus;
 import com.kodilla.ecommercee.repository.OrderItemRepository;
 import com.kodilla.ecommercee.repository.OrderRepository;
 import com.kodilla.ecommercee.repository.UserRepository;
@@ -57,7 +58,7 @@ public class OrderTestSuite {
         //Given
         User user = new User();
         user.setUserName("pablo");
-        user.setStatus(23);
+        user.setStatus(UserStatus.TO_ACTIVATE);
         user.setUserKey(2L);
         user.setFirstName("Paweł");
         user.setLastName("Kowalski");
@@ -69,7 +70,6 @@ public class OrderTestSuite {
         user.setStreet("Bierutowska");
         user.setHouseNr("235");
         user.setPhoneNumber("222-222-222");
-        user.setBlocked(false);
         user.setLogin("paolo");
         user.setPassword("qwerty");
         Order order= new Order();
@@ -108,7 +108,7 @@ public class OrderTestSuite {
     public void testOrderUpdate() {
         //Given
         Order order= new Order();
-        order.setTotalPrice(new BigDecimal(22.3));
+        order.setTotalPrice(new BigDecimal(22.3)); 
         order.setPaid(false);
         List<OrderItem> orderItems = new ArrayList<>();
         OrderItem orderItem = new OrderItem();
