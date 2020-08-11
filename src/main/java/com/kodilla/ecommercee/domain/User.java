@@ -21,15 +21,15 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue
-    @NotNull
-    @Column(name= "ID", unique = true)
+    @Column(unique = true)
     private Long id;
 
     @NotNull
     private String userName;
 
     @NotNull
-    private int status;
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
 
     @NotNull
     private Long userKey;
@@ -66,9 +66,6 @@ public class User {
     @NotNull
     private String phoneNumber;
 
-    @NotNull
-    private boolean isBlocked;
-
     @Column(unique = true)
     @NotNull
     private String login;
@@ -83,6 +80,7 @@ public class User {
             fetch = FetchType.LAZY
     )
     private List<Order> orders = new ArrayList<>();
+
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "CARTS_ID")

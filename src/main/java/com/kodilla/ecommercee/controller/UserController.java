@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee.controller;
 
+import com.kodilla.ecommercee.domain.UserStatus;
 import com.kodilla.ecommercee.dto.UserDto;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,20 +10,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/users")
 public class UserController {
-
     @GetMapping
     public List<UserDto> getUsers() {
         return Arrays.asList(
                 UserDto.builder()
                         .id(3L)
                         .userName("Piotrek")
-                        .status(1)
+                        .status(UserStatus.ACTIVE)
                         .userKey(59403L)
                         .build(),
                 UserDto.builder()
                         .id(2L)
                         .userName("Admin")
-                        .status(1)
+                        .status(UserStatus.BANNED)
                         .userKey(96997L)
                         .build());
     }
@@ -54,7 +54,6 @@ public class UserController {
                 userDto.getHouseNr(),
                 userDto.getApartmentNr(),
                 userDto.getPhoneNumber(),
-                userDto.isBlocked(),
                 userDto.getLogin(),
                 userDto.getPassword(),
                 userDto.getOrders(),
