@@ -58,7 +58,12 @@ public class Product {
     @Column(name = "CART_ID")
     private List<Cart> carts = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "ORDER_ITEM_ID")
-    private OrderItem orderItem;
+    @OneToMany(
+            targetEntity = OrderItem.class,
+            mappedBy = "product",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    @Column(name = "ORDER_ITEM_ID")
+    private List<OrderItem> orderItems = new ArrayList<>();
 }
