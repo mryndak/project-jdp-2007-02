@@ -13,15 +13,12 @@ public class GroupMapper {
         return new Group(
                 groupDto.getId(),
                 groupDto.getName(),
-                groupDto.getDescription()
-                );
+                groupDto.getDescription());
     }
 
+
     public GroupDto mapToGroupDto(Group group) {
-        return new GroupDto(
-                group.getId(),
-                group.getName(),
-                group.getDescription());
+        return new GroupDto(group.getId(), group.getName());
     }
 
     public List<GroupDto> mapToGroupDtoList(List<Group> groupList) {
@@ -29,7 +26,7 @@ public class GroupMapper {
                 .map(group -> new GroupDto(
                         group.getId(),
                         group.getName(),
-                        group.getDescription))
+                        group.getDescription())
                 .collect(Collectors.toList());
     }
 }
