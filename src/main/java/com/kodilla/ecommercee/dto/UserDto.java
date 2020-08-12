@@ -30,7 +30,7 @@ public class UserDto {
     private boolean isBlocked;
     private String login;
     private String password;
-    private List<OrderDto> ordersDto;
-    private CartDto cartDto;
+    private List<Order> orders;
+    private Cart cart;
 }
 
