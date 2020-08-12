@@ -17,5 +17,5 @@ import java.util.List;
 public class GroupDto {
     private Long Id;
     private String description;
-//    private List<Product> products = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
 }
