@@ -19,8 +19,10 @@ public class OrderItem {
     @Id
     @GeneratedValue
     private Long id;
+    @ManyToOne
+    @JoinColumn(name="product")
     @NotNull
-    private Long productId;
+    private Product product;
     @NotNull
     private int quantity;
     @NotNull
@@ -29,6 +31,5 @@ public class OrderItem {
     @JoinColumn(name = "order_id")
     @NotNull
     private Order order;
-
 }
 

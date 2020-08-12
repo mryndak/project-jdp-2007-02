@@ -24,7 +24,7 @@ public class Group {
     private Long id;
 
     @NotNull
-    private String name;
+    private String description;
 
     @OneToMany(
             targetEntity = Product.class,
