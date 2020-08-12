@@ -11,21 +11,24 @@ import java.util.stream.Collectors;
 public class GroupMapper {
     public Group mapToGroup(final GroupDto groupDto) {
         return new Group(
-                groupDto.getId,
-                groupDto.getName,
-                groupDto.getDescription(),
+                groupDto.getId(),
+                groupDto.getName(),
+                groupDto.getDescription()
                 );
     }
 
     public GroupDto mapToGroupDto(Group group) {
-        return new GroupDto(group.getId(), group.getName());
+        return new GroupDto(
+                group.getId(),
+                group.getName(),
+                group.getDescription());
     }
 
     public List<GroupDto> mapToGroupDtoList(List<Group> groupList) {
         return groupList.stream()
                 .map(group -> new GroupDto(
                         group.getId(),
-                        group.getName()
+                        group.getName(),
                         group.getDescription))
                 .collect(Collectors.toList());
     }

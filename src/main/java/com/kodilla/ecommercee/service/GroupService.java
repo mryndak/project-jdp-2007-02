@@ -12,8 +12,8 @@ import java.util.Optional;
 public class GroupService {
     private final GroupRepository groupRepository;
 
-    public void saveGroup(Group group) {
-        groupRepository.save(group);
+    public Group saveGroup(Group group) {
+        return groupRepository.save(group);
     }
 
     public List<Group> getAllGroups() {
