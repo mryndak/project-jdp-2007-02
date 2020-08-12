@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -12,5 +14,7 @@ import lombok.Setter;
 
 public class GroupDto {
     private Long Id;
+    private String name;
     private String description;
+    private List<ProductDto> productDtoList;
 }

@@ -12,7 +12,7 @@ import java.util.Optional;
 public class GroupService {
     private final GroupRepository groupRepository;
 
-    public void createGroup(Group group) {
+    public void saveGroup(Group group) {
         groupRepository.save(group);
     }
 
