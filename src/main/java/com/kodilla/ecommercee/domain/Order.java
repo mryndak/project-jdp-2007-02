@@ -20,7 +20,7 @@ public class Order {
     @GeneratedValue
     @Column(unique = true)
     private Long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     private User user;
     @NotNull
@@ -41,4 +41,3 @@ public class Order {
     private List<OrderItem> items;
     private String comment;
 }
-
