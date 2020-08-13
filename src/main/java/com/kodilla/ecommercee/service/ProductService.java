@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee.service;
 
+import com.kodilla.ecommercee.dto.GroupDto;
 import com.kodilla.ecommercee.dto.ProductDto;
 import com.kodilla.ecommercee.exception.NotFoundException;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class ProductService {
                 .filter(prodDto -> prodDto.getId().equals(id))
                 .findFirst().orElseThrow(()->new NotFoundException("Product not found"));
         productDtoToUpdate.setDescription(productDto.getDescription());
-        productDtoToUpdate.setGroupId(productDto.getGroupId());
+        productDtoToUpdate.setGroupDto(productDto.getGroupDto());
         productDtoToUpdate.setName(productDto.getName());
         productDtoToUpdate.setPrice(productDto.getPrice());
         int position = initialProductDtoList.indexOf(productDtoToUpdate);
@@ -48,24 +49,25 @@ public class ProductService {
         ProductDto pencil = ProductDto.builder()
                 .id(3L)
                 .description("Majstersztyk długopis")
-                .groupId(1L)
+                .groupDto(new GroupDto())
                 .name("Długopis")
                 .price(BigDecimal.valueOf(99.99))
                 .build();
         ProductDto mouse = ProductDto.builder()
                 .id(2L)
                 .description("Pro head shots")
-                .groupId(2L)
+                .groupDto(new GroupDto())
                 .name("Nimbus 2000")
                 .price(BigDecimal.valueOf(219.99))
                 .build();
         ProductDto keyboard = ProductDto.builder()
                 .id(1L)
                 .description("Gamers keyboard")
-                .groupId(3L)
+                .groupDto(new GroupDto())
                 .name("Samsung 4500")
                 .price(BigDecimal.valueOf(150.30))
                 .build();
+
         productDtoList.add(pencil);
         productDtoList.add(mouse);
         productDtoList.add(keyboard);
