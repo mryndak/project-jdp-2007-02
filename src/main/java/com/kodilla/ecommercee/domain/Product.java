@@ -46,7 +46,7 @@ public class Product {
     @Column(name = "AGE_REGULATION")
     private boolean ageRegulation;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "GROUP_ID")
     private Group group;
 
