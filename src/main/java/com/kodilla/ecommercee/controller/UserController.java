@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee.controller;
 
+import com.kodilla.ecommercee.domain.UserStatus;
 import com.kodilla.ecommercee.dto.UserDto;
 import com.kodilla.ecommercee.exception.NotFoundException;
 import com.kodilla.ecommercee.mapper.usermapper.UserMapperAllData;
@@ -13,7 +14,6 @@ import java.util.List;
 @RequestMapping("/v1/users")
 @RequiredArgsConstructor
 public class UserController {
-
     private final UserService service;
     private final UserMapperAllData mapper;
 
