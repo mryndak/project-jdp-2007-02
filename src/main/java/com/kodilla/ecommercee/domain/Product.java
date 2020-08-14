@@ -19,7 +19,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
-    @Column(name = "PRODUCT_ID", unique = true)
+    @Column(name = "ID", unique = true)
     private Long id;
 
     @Column(name = "NAME")
@@ -51,11 +51,12 @@ public class Product {
     private Group group;
 
     @ManyToMany(
-            cascade = CascadeType.ALL,
+            targetEntity = Cart.class,
+            cascade = CascadeType.PERSIST,
             mappedBy = "products",
             fetch = FetchType.LAZY
     )
-    @Column(name = "CART_ID")
+    @JoinColumn(name = "CART_ID")
     private List<Cart> carts = new ArrayList<>();
 
     @OneToMany(
@@ -64,6 +65,6 @@ public class Product {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
-    @Column(name = "ORDER_ITEM_ID")
+    @JoinColumn(name = "ORDER_ITEM_ID")
     private List<OrderItem> orderItems = new ArrayList<>();
 }

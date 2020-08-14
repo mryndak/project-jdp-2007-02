@@ -22,7 +22,7 @@ public class Cart {
     @Id
     @NotNull
     @GeneratedValue
-    @Column(name = "CART_ID")
+    @Column(name = "ID")
     private Long id;
 
     @NotNull
@@ -33,11 +33,12 @@ public class Cart {
     @Column(name = "QUANTITY")
     private Integer quantity;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @Column(name = "PRODUCT_ID")
+    @ManyToMany
+    @JoinColumn(name = "PRODUCT_ID")
     public List<Product> products = new ArrayList<>();
 
     @OneToOne
     @NotNull
+    @JoinColumn(name = "USER_ID")
     public User user;
 }

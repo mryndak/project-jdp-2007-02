@@ -77,6 +77,7 @@ public class User {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
+    @JoinColumn(name = "ORDER_ID")
     private List<Order> orders = new ArrayList<>();
 
 

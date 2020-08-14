@@ -21,7 +21,7 @@ public class Order {
     @Column(unique = true)
     private Long id;
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "USER_ID")
     private User user;
     @NotNull
     private BigDecimal totalPrice;
@@ -37,6 +37,7 @@ public class Order {
             cascade = CascadeType.ALL,
             mappedBy = "order"
     )
+    @JoinColumn(name = "ORDER_ITEM_ID")
     @NotNull
     private List<OrderItem> items;
     private String comment;

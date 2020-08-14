@@ -30,5 +30,6 @@ public class Group {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
+    @JoinColumn(name = "PRODUCT_ID")
     private List<Product> products = new ArrayList<>();
 }
