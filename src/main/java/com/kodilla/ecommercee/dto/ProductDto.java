@@ -25,7 +25,7 @@ public class ProductDto {
     private boolean isAvailable;
     private boolean isNew;
     private boolean ageRegulation;
-    private GroupDto groupDto;
-    private List<CartDto> cartsDto = new ArrayList<>();
-    private List<OrderItemDto> orderItemsDto = new ArrayList<>();
+    private Group group;
+    private List<Cart> carts = new ArrayList<>();
+    private List<OrderItem> orderItems = new ArrayList<>();
 }
