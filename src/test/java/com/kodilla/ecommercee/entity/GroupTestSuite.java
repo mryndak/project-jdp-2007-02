@@ -29,7 +29,7 @@ public class GroupTestSuite {
     public void testGroupSave() {
         //Given
         Group group = new Group();
-        group.setName("Keyboards");
+        group.setDescription("Keyboards");
         //When
         groupRepository.save(group);
         //Than
@@ -46,7 +46,7 @@ public class GroupTestSuite {
         Product product = new Product();
         productList.add(product);
         Group group = new Group();
-        group.setName("Keyboard");
+        group.setDescription("Keyboard");
         group.setProducts(productList);
         product.setGroup(group);
         product.setName("product");
@@ -69,15 +69,15 @@ public class GroupTestSuite {
     public void testGroupUpdate() {
         //Given
         Group group = new Group();
-        group.setName("Keyboard");
+        group.setDescription("Keyboard");
         //When
         groupRepository.save(group);
-        group.setName("Gaming Mouse");
+        group.setDescription("Gaming Mouse");
         groupRepository.save(group);
         //Than
         Group groupOptional = groupRepository.findById(group.getId()).orElse(null);
-        Assert.assertEquals("Gaming Mouse", groupOptional.getName());
-        Assert.assertNotEquals("Keyboard", groupOptional.getName());
+        Assert.assertEquals("Gaming Mouse", groupOptional.getDescription());
+        Assert.assertNotEquals("Keyboard", groupOptional.getDescription());
         //CleanUp
         groupRepository.deleteById(group.getId());
     }
