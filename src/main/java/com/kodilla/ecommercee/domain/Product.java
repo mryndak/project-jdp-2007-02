@@ -1,6 +1,7 @@
 package com.kodilla.ecommercee.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

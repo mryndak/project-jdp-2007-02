@@ -1,76 +1,81 @@
 package com.kodilla.ecommercee.service;
 
-import com.kodilla.ecommercee.dto.GroupDto;
-import com.kodilla.ecommercee.dto.ProductDto;
+import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.exception.NotFoundException;
+import com.kodilla.ecommercee.repository.ProductRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class ProductService {
-    private List<ProductDto> initialProductDtoList = generateProductsDto();
+    private final ProductRepository productRepository;
 
-    public List<ProductDto> getProducts() {
-        return initialProductDtoList;
+    public List<Product> getProducts() {
+        return productRepository.findAll();
     }
 
-    public ProductDto getProduct(Long id) throws NotFoundException {
-        return initialProductDtoList.stream()
-                .filter(productDto -> productDto.getId().equals(id))
-                .findFirst().orElseThrow(()->new NotFoundException("Product not found"));
+    public Product getProduct(final Long id) throws NotFoundException {
+        return productRepository.findById(id).orElseThrow(() -> new NotFoundException("Product doesn't exist"));
     }
 
-    public void deleteProduct(Long id) {
-        initialProductDtoList.removeIf(productDto -> productDto.getId().equals(id));
+    public void deleteProduct(final Long id) {
+        productRepository.deleteById(id);
     }
 
-    public void createProduct(ProductDto productDto) {
-        initialProductDtoList.add(productDto);
+    public void createProduct(Product product) {
+        saveProduct(product);
     }
 
-    public ProductDto updateProduct(Long id,ProductDto productDto) throws NotFoundException {
-        ProductDto productDtoToUpdate = initialProductDtoList.stream()
-                .filter(prodDto -> prodDto.getId().equals(id))
-                .findFirst().orElseThrow(()->new NotFoundException("Product not found"));
-        productDtoToUpdate.setDescription(productDto.getDescription());
-        productDtoToUpdate.setGroupDto(productDto.getGroupDto());
-        productDtoToUpdate.setName(productDto.getName());
-        productDtoToUpdate.setPrice(productDto.getPrice());
-        int position = initialProductDtoList.indexOf(productDtoToUpdate);
-        initialProductDtoList.set(position, productDtoToUpdate);
-        return productDtoToUpdate;
+    public Product saveProduct(final Product product) {
+        return productRepository.save(product);
     }
 
-    private List<ProductDto> generateProductsDto() {
-        List<ProductDto> productDtoList = new ArrayList<>();
-        ProductDto pencil = ProductDto.builder()
-                .id(3L)
-                .description("Majstersztyk długopis")
-                .groupDto(new GroupDto())
-                .name("Długopis")
-                .price(BigDecimal.valueOf(99.99))
-                .build();
-        ProductDto mouse = ProductDto.builder()
-                .id(2L)
-                .description("Pro head shots")
-                .groupDto(new GroupDto())
-                .name("Nimbus 2000")
-                .price(BigDecimal.valueOf(219.99))
-                .build();
-        ProductDto keyboard = ProductDto.builder()
-                .id(1L)
-                .description("Gamers keyboard")
-                .groupDto(new GroupDto())
-                .name("Samsung 4500")
-                .price(BigDecimal.valueOf(150.30))
-                .build();
+    public Product updateProduct(final Long id, final Product product) throws NotFoundException {
+        Product productToUpdate = productRepository.findById(id).orElseThrow(() -> new NotFoundException("Product doesn't exist"));
+        productToUpdate.setDescription(product.getDescription());
+        productToUpdate.setName(product.getName());
+        productToUpdate.setPrice(product.getPrice());
+        productToUpdate.setAvailable(product.isAvailable());
+        productToUpdate.setStock(product.getStock());
+        productToUpdate.setNew(product.isNew());
+        productToUpdate.setAgeRegulation(product.isAgeRegulation());
+        productToUpdate.setGroup(product.getGroup());
 
-        productDtoList.add(pencil);
-        productDtoList.add(mouse);
-        productDtoList.add(keyboard);
-        return productDtoList;
+        int position = productRepository.findAll().indexOf(productToUpdate);
+        productRepository.findAll().set(position, productToUpdate);
+        return saveProduct(productToUpdate);
     }
+
+//    private List<ProductDto> generateProductsDto() {
+//        List<ProductDto> productDtoList = new ArrayList<>();
+//        ProductDto pencil = ProductDto.builder()
+//                .id(3L)
+//                .description("Majstersztyk długopis")
+//                .groupDto(new GroupDto())
+//                .name("Długopis")
+//                .price(BigDecimal.valueOf(99.99))
+//                .build();
+//        ProductDto mouse = ProductDto.builder()
+//                .id(2L)
+//                .description("Pro head shots")
+//                .groupDto(new GroupDto())
+//                .name("Nimbus 2000")
+//                .price(BigDecimal.valueOf(219.99))
+//                .build();
+//        ProductDto keyboard = ProductDto.builder()
+//                .id(1L)
+//                .description("Gamers keyboard")
+//                .groupDto(new GroupDto())
+//                .name("Samsung 4500")
+//                .price(BigDecimal.valueOf(150.30))
+//                .build();
+//
+//        productDtoList.add(pencil);
+//        productDtoList.add(mouse);
+//        productDtoList.add(keyboard);
+//        return productDtoList;
+//    }
 }
