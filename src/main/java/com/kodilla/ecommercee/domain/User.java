@@ -19,7 +19,6 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue
-    @Column(unique = true)
     private Long id;
 
     @NotNull
@@ -81,6 +80,6 @@ public class User {
 
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "CARTS_ID")
+    @JoinColumn(name = "CART_ID")
     private Cart cart;
 }

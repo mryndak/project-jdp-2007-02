@@ -18,10 +18,9 @@ import java.util.List;
 public class Order {
     @Id
     @GeneratedValue
-    @Column(unique = true)
     private Long id;
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "USER_ID")
     private User user;
     @NotNull
     private BigDecimal totalPrice;

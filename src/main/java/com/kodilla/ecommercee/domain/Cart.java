@@ -20,9 +20,7 @@ import java.util.List;
 public class Cart {
 
     @Id
-    @NotNull
     @GeneratedValue
-    @Column(name = "CART_ID")
     private Long id;
 
     @NotNull
@@ -34,10 +32,10 @@ public class Cart {
     private Integer quantity;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @Column(name = "PRODUCT_ID")
     public List<Product> products = new ArrayList<>();
 
     @OneToOne
     @NotNull
+    @JoinColumn(name = "USER_ID")
     public User user;
 }
