@@ -32,7 +32,7 @@ public class ProductTestSuite {
     @Test
     public void testProductSave() {
         //Given
-        Product product= new Product();
+        Product product = new Product();
         Group group = new Group();
 
         product.setName("Zeszyt");
@@ -51,8 +51,9 @@ public class ProductTestSuite {
         //CleanUp
         productRepository.deleteById(productId);
     }
+
     @Test
-    public void testProductDelete(){
+    public void testProductDelete() {
 
         User user = new User();
         user.setUserName("pablo");
@@ -60,7 +61,7 @@ public class ProductTestSuite {
         user.setUserKey(2L);
         user.setFirstName("Paweł");
         user.setLastName("Kowalski");
-        user.setBirthDate(LocalDate.of(1993,2,2));
+        user.setBirthDate(LocalDate.of(1993, 2, 2));
         user.setRegisterDate(LocalDate.now());
         user.setEmail("pablo@wp.pl");
         user.setCity("Wrocław");
@@ -74,7 +75,7 @@ public class ProductTestSuite {
         List<OrderItem> orderItems = new ArrayList<>();
         OrderItem orderItem = new OrderItem();
 
-        Order order= new Order();
+        Order order = new Order();
         order.setTotalPrice(new BigDecimal(22.3));
         order.setPaid(true);
 
@@ -82,13 +83,12 @@ public class ProductTestSuite {
         order.setUser(user);
         user.getOrders().add(order);
 
-        Product product= new Product();
-        List<Product> products=new ArrayList<>();
+        Product product = new Product();
+        List<Product> products = new ArrayList<>();
 
         Group group = new Group();
         group.setDescription("Papiernicze");
 
-//        List<Cart> carts=new ArrayList<>();
         Cart cart = new Cart();
 
         cart.setProducts(products);
@@ -134,12 +134,14 @@ public class ProductTestSuite {
         Assert.assertFalse(readOrderItem.isPresent());
 
         //CleanUp
+        cartRepository.deleteById(cartId);
         userRepository.deleteById(userId);
     }
+
     @Test
     public void testProductUpdate() {
         //Given
-        Product product= new Product();
+        Product product = new Product();
         Group group = new Group();
 
         product.setName("Zeszyt");
@@ -156,7 +158,7 @@ public class ProductTestSuite {
         //Then
         Long productId = product.getId();
         Product readProduct = productRepository.findById(productId).orElse(null);
-        Assert.assertEquals(readProduct.getName(),"Piornik");
+        Assert.assertEquals(readProduct.getName(), "Piornik");
         //CleanUp
         productRepository.deleteById(productId);
     }
