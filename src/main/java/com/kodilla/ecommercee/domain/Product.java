@@ -18,8 +18,6 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @NotNull
-    @Column(name = "PRODUCT_ID", unique = true)
     private Long id;
 
     @Column(name = "NAME")
@@ -51,11 +49,11 @@ public class Product {
     private Group group;
 
     @ManyToMany(
+            targetEntity = Cart.class,
             cascade = CascadeType.ALL,
             mappedBy = "products",
             fetch = FetchType.LAZY
     )
-    @Column(name = "CART_ID")
     private List<Cart> carts = new ArrayList<>();
 
     @OneToMany(
@@ -64,6 +62,5 @@ public class Product {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
-    @Column(name = "ORDER_ITEM_ID")
     private List<OrderItem> orderItems = new ArrayList<>();
 }

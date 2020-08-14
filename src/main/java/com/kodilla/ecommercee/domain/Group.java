@@ -18,7 +18,6 @@ public class Group {
 
     @Id
     @GeneratedValue
-    @Column(unique = true)
     private Long id;
 
     @NotNull
