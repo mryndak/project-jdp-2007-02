@@ -11,10 +11,9 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public final class ProductMapper {
-    private final GroupMapper groupMapper;
-    private final CartMapper cartMapper;
-    private final OrderItemMapper orderItemMapper;
-
+    private GroupMapper groupMapper;
+    private CartMapper cartMapper;
+    private OrderItemMapper orderItemMapper;
 
     public List<ProductDto> mapToProductDtoList(final List<Product> productList) {
         return productList.stream()
