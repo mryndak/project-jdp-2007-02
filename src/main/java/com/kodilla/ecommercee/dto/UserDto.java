@@ -1,6 +1,5 @@
 package com.kodilla.ecommercee.dto;
-import com.kodilla.ecommercee.domain.Cart;
-import com.kodilla.ecommercee.domain.Order;
+
 import com.kodilla.ecommercee.domain.UserStatus;
 import lombok.*;
 
@@ -30,8 +29,7 @@ public class UserDto {
     private String phoneNumber;
     private String login;
     private String password;
-    private List<Order> orders;
-    private Cart cart;
-    
+    private List<OrderDto> orders;
+    private CartDto cartDto;
 }
 

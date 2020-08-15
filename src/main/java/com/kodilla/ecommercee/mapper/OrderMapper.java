@@ -1,14 +1,10 @@
 package com.kodilla.ecommercee.mapper;
 
 import com.kodilla.ecommercee.domain.Order;
-import com.kodilla.ecommercee.domain.OrderItem;
-import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.dto.OrderDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,6 +46,12 @@ public class OrderMapper {
     public List<OrderDto> mapToOrderDtoList(final List<Order> orderList) {
         return orderList.stream()
                 .map(this::mapToOrderDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<Order> mapToOrderList(final List<OrderDto> orderDtoList) {
+        return orderDtoList.stream()
+                .map(this::mapToOrder)
                 .collect(Collectors.toList());
     }
 }
