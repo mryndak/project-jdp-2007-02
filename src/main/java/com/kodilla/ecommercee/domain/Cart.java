@@ -31,11 +31,12 @@ public class Cart {
     @Column(name = "QUANTITY")
     private Integer quantity;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @JoinTable(name = "CARTS_PRODUCTS",
+            joinColumns = @JoinColumn(name = "PRODUCT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CART_ID"))
     public List<Product> products = new ArrayList<>();
 
-    @OneToOne
-    @NotNull
-    @JoinColumn(name = "USER_ID")
+    @OneToOne(mappedBy = "cart")
     public User user;
 }

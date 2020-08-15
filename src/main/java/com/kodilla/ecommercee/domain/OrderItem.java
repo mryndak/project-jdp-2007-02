@@ -19,7 +19,7 @@ public class OrderItem {
     @Id
     @GeneratedValue
     private Long id;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name="PRODUCT_ID")
     @NotNull
     private Product product;
@@ -27,7 +27,7 @@ public class OrderItem {
     private int quantity;
     @NotNull
     private BigDecimal price;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "ORDER_ID")
     @NotNull
     private Order order;

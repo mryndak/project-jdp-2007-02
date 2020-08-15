@@ -44,15 +44,12 @@ public class Product {
     @Column(name = "AGE_REGULATION")
     private boolean ageRegulation;
 
-    @ManyToOne(optional = false,cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "GROUP_ID")
     private Group group;
 
     @ManyToMany(
-            targetEntity = Cart.class,
-            cascade = CascadeType.ALL,
-            mappedBy = "products",
-            fetch = FetchType.LAZY
+            mappedBy = "products"
     )
     private List<Cart> carts = new ArrayList<>();
 
@@ -60,7 +57,8 @@ public class Product {
             targetEntity = OrderItem.class,
             mappedBy = "product",
             fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
     )
     private List<OrderItem> orderItems = new ArrayList<>();
 }

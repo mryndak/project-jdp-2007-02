@@ -19,7 +19,7 @@ public class Order {
     @Id
     @GeneratedValue
     private Long id;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
     @NotNull
@@ -34,7 +34,8 @@ public class Order {
             targetEntity = OrderItem.class,
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
-            mappedBy = "order"
+            mappedBy = "order",
+            orphanRemoval = true
     )
     @NotNull
     private List<OrderItem> items;

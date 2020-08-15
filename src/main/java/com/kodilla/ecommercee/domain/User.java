@@ -73,13 +73,13 @@ public class User {
     @OneToMany(
             targetEntity = Order.class,
             mappedBy = "user",
-            cascade = CascadeType.ALL,
+            cascade = {CascadeType.MERGE,CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
     private List<Order> orders = new ArrayList<>();
 
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "CART_ID")
     private Cart cart;
 }
