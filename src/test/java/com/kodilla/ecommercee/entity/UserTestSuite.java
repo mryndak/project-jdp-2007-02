@@ -5,6 +5,7 @@ import com.kodilla.ecommercee.repository.CartRepository;
 import com.kodilla.ecommercee.repository.OrderItemRepository;
 import com.kodilla.ecommercee.repository.OrderRepository;
 import com.kodilla.ecommercee.repository.UserRepository;
+import javafx.collections.ObservableList;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -53,38 +52,34 @@ public class UserTestSuite {
         return user;
     }
 
-    private Cart cartData() {
+    private Product productData() {
         Product product = new Product();
-        List<Product> products = new ArrayList<>();
+        product.setName("Okulary");
+        product.setDescription("Przeciwsłoneczne");
+        product.setPrice(new BigDecimal(10));
+        product.setStock(12);
+        product.setAvailable(true);
+        product.setNew(true);
+        product.setAgeRegulation(false);
+        return product;
+    }
+
+    private Cart cartData() {
         Cart cart = new Cart();
         cart.setTotalPrice(new BigDecimal(200));
-        cart.setId(1L);
         cart.setQuantity(1);
-        cart.setUser(userData());
-        cart.setProducts(products);
         return cart;
     }
 
-    private Order orderAndOrderItemData() {
-        Product product = new Product();
-
-        OrderItem orderItem = new OrderItem();
-        orderItem.setId(1L);
-        orderItem.setProduct(product);
+    private Order orderData() {
         Order order = new Order();
-        List<Order> orderList = new ArrayList<>();
-//        OrderItem orderItem = new OrderItem();
-        List<OrderItem> orderItemList = new ArrayList<>();
-        order.setId(1L);
-        order.setUser(userData());
-        order.setTotalPrice(new BigDecimal(300));
+        order.setTotalPrice(new BigDecimal(20));
         order.setDateOfOrder(LocalDate.now());
         order.setDateOfShipment(LocalDate.now());
         order.setDeliveryMethod("Paczkomat");
         order.setPaid(true);
         order.setOrderCompleted(true);
         order.setComment("Llalala");
-        order.setItems(orderItemList);
         return order;
     }
 
@@ -124,13 +119,42 @@ public class UserTestSuite {
     public void testDeleteUser() {
         //GIVEN
         User user = userData();
+        List<OrderItem> orderItemList = new ArrayList<>();
+        OrderItem orderItem = new OrderItem();
+
+        Order order = orderData();
+        order.setItems(orderItemList);
+        order.setUser(user);
+        user.getOrders().add(order);
+
+        Product product = productData();
+//        List<Product> productList = new ArrayList<>();
+
         Cart cart = cartData();
+        cart.setUser(user);
+
+        product.getCarts().add(cart);
+
+        product.setOrderItems(orderItemList);
+
+        userRepository.save(user);
         Long userId = user.getId();
+        Long orderId = order.getId();
+        Long cartId = cart.getId();
+
         //WHEN
         userRepository.deleteById(userId);
-        //THEN
+        Optional<Order> readOrder = orderRepository.findById(orderId);
         Optional<User> readUser = userRepository.findById(userId);
-        Assert.assertFalse(readUser.isPresent());
-    }
+        Optional<Cart> readCart = cartRepository.findById(cartId);
 
+        //THEN
+        Assert.assertFalse(readUser.isPresent());
+        Assert.assertFalse(readOrder.isPresent());
+        Assert.assertFalse(readCart.isPresent());
+
+        //CLEANUP
+        orderRepository.deleteById(orderId);
+        cartRepository.deleteById(cartId);
+    }
 }
