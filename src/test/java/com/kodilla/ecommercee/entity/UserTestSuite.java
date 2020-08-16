@@ -146,15 +146,15 @@ public class UserTestSuite {
         userRepository.deleteById(userId);
         Optional<Order> readOrder = orderRepository.findById(orderId);
         Optional<User> readUser = userRepository.findById(userId);
-//        Optional<Cart> readCart = cartRepository.findById(cartId);
+        Optional<Cart> readCart = cartRepository.findById(cartId);
 
         //THEN
         Assert.assertFalse(readUser.isPresent());
         Assert.assertFalse(readOrder.isPresent());
-//        Assert.assertFalse(readCart.isPresent());
+        Assert.assertFalse(readCart.isPresent());
 
         //CLEANUP
         orderRepository.deleteById(orderId);
-//        cartRepository.deleteById(cartId);
+        cartRepository.deleteById(cartId);
     }
 }
