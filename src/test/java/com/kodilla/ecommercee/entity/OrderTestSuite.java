@@ -1,21 +1,21 @@
 package com.kodilla.ecommercee.entity;
 
-import com.kodilla.ecommercee.domain.*;
-import com.kodilla.ecommercee.repository.OrderItemRepository;
-import com.kodilla.ecommercee.repository.OrderRepository;
-import com.kodilla.ecommercee.repository.UserRepository;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+        import com.kodilla.ecommercee.domain.*;
+        import com.kodilla.ecommercee.repository.OrderItemRepository;
+        import com.kodilla.ecommercee.repository.OrderRepository;
+        import com.kodilla.ecommercee.repository.UserRepository;
+        import org.junit.Assert;
+        import org.junit.Test;
+        import org.junit.runner.RunWith;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.boot.test.context.SpringBootTest;
+        import org.springframework.test.context.junit4.SpringRunner;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+        import java.math.BigDecimal;
+        import java.time.LocalDate;
+        import java.util.ArrayList;
+        import java.util.List;
+        import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
