@@ -5,7 +5,6 @@ import com.kodilla.ecommercee.repository.CartRepository;
 import com.kodilla.ecommercee.repository.OrderItemRepository;
 import com.kodilla.ecommercee.repository.OrderRepository;
 import com.kodilla.ecommercee.repository.UserRepository;
-import javafx.collections.ObservableList;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
