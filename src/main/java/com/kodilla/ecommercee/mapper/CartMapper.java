@@ -38,5 +38,11 @@ public class CartMapper {
                 .map(this::mapToCartDto)
                 .collect(Collectors.toList());
     }
+
+    public List<Cart> mapToCartList(final List<CartDto> cartDtoList){
+        return cartDtoList.stream()
+                .map(this::mapToCart)
+                .collect(Collectors.toList());
+    }
 }
 
